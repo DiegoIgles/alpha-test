@@ -27,7 +27,7 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3, p { margin-top: 0; overflow-wrap: anywhere; }
 h1 { font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.12; margin-bottom: 16px; letter-spacing: -0.01em; }
 h2 { font-size: 1.2rem; margin-bottom: 16px; }
 h3 { font-size: 1rem; margin-bottom: 4px; }
@@ -121,6 +121,11 @@ input:not([type="checkbox"]) {
 .boton-peligro:hover { background: #2b1416; }
 .boton-texto { background: none; border: 0; padding: 4px 0; color: var(--azul-claro); font: inherit; text-decoration: underline; cursor: pointer; white-space: nowrap; }
 
+.boton-texto:disabled { opacity: 0.5; cursor: default; }
+.boton-texto-peligro { color: var(--error); }
+.celda-acciones { white-space: nowrap; }
+.celda-acciones .boton-texto + .boton-texto { margin-left: 14px; }
+
 .error { color: var(--error); margin: 12px 0; }
 
 .pista { height: 8px; background: var(--superficie-alta); border-radius: 4px; overflow: hidden; }
@@ -203,10 +208,30 @@ th, td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--borde); verti
 
 @media (max-width: 800px) {
   .inicio, .rejilla-resultado, .lista-carreras { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
   .estadisticas { grid-template-columns: 1fr; }
+  .panel-cabecera .boton { width: 100%; }
+  .bloque-tabla input { max-width: none; }
+  .detalle .boton-peligro { width: 100%; }
+}
+
+@media (max-width: 900px) {
+  .tabla-tarjetas thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tabla-tarjetas, .tabla-tarjetas tbody, .tabla-tarjetas tr, .tabla-tarjetas td { display: block; }
+  .tabla-tarjetas tr { padding: 10px 14px; margin-bottom: 12px; background: var(--superficie-alta); border: 1px solid var(--borde); border-radius: 8px; }
+  .tabla-tarjetas td { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 10px; padding: 5px 0; border: 0; overflow-wrap: anywhere; white-space: normal; }
+  .tabla-tarjetas td::before { content: attr(data-etiqueta); color: var(--texto-suave); }
+  .tabla-tarjetas .celda-acciones { display: flex; gap: 8px; margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--borde); }
+  .celda-acciones::before { content: none; }
+  .celda-acciones .boton-texto { flex: 1; min-height: 44px; }
+  .celda-acciones .boton-texto + .boton-texto { margin-left: 0; }
 }
 
 @media (max-width: 480px) {
+  .acciones { flex-direction: column-reverse; }
+  .acciones .boton { width: 100%; }
   .opciones { grid-template-columns: 1fr; }
   .opcion { flex-direction: row; gap: 12px; min-height: 48px; padding: 8px 14px; }
   .pista-teclado { display: none; }

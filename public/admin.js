@@ -30,6 +30,27 @@ function pintarEstadisticas() {
   $('distribucion').replaceChildren(...perfiles.map(([nombre, cantidad]) => barraPorcentaje(nombre, cantidad, String(cantidad), maximo)));
 }
 
+function celda(etiqueta, texto) {
+  const td = crear('td', { textContent: texto });
+  td.dataset.etiqueta = etiqueta;
+  return td;
+}
+
+async function eliminarRespuesta(registro, boton) {
+  if (!window.confirm(`¿Eliminar la respuesta de ${registro.participante.nombre}? Esta acción no se puede deshacer.`)) return;
+  boton.disabled = true;
+  try {
+    await pedirJson(`/api/admin/respuestas/${registro.id}`, { method: 'DELETE' });
+    if ($('detalle').open) $('detalle').close();
+    await cargar();
+  } catch (error) {
+    if ($('detalle').open) $('detalle').close();
+    mostrarError($('error-panel'), error.message);
+    boton.disabled = false;
+    $('error-panel').scrollIntoView({ block: 'nearest' });
+  }
+}
+
 function pintarFilas() {
   const filtro = $('buscar').value.trim().toLocaleLowerCase('es');
   const filas = datos.respuestas.filter((r) => {
@@ -41,14 +62,19 @@ function pintarFilas() {
     const ver = crear('button', { type: 'button', className: 'boton-texto', textContent: 'Ver respuestas' });
     ver.setAttribute('aria-label', `Ver respuestas de ${r.participante.nombre}`);
     ver.addEventListener('click', () => abrirDetalle(r));
+    const eliminar = crear('button', { type: 'button', className: 'boton-texto boton-texto-peligro', textContent: 'Eliminar' });
+    eliminar.setAttribute('aria-label', `Eliminar respuesta de ${r.participante.nombre}`);
+    eliminar.addEventListener('click', () => eliminarRespuesta(r, eliminar));
+    const fecha = celda('Fecha', formatoFecha.format(new Date(r.fecha)));
+    fecha.classList.add('sin-salto');
     return crear('tr', {},
-      crear('td', { className: 'sin-salto', textContent: formatoFecha.format(new Date(r.fecha)) }),
-      crear('td', { textContent: r.participante.nombre }),
-      crear('td', { textContent: r.participante.edad }),
-      crear('td', { textContent: r.participante.colegio || '—' }),
-      crear('td', { textContent: r.resultado.perfiles[0].nombre }),
-      crear('td', { textContent: r.resultado.carreras[0].nombre }),
-      crear('td', {}, ver));
+      fecha,
+      celda('Nombre', r.participante.nombre),
+      celda('Edad', r.participante.edad),
+      celda('Colegio', r.participante.colegio || '—'),
+      celda('Afinidad', r.resultado.perfiles[0].nombre),
+      celda('Carrera', r.resultado.carreras[0].nombre),
+      crear('td', { className: 'celda-acciones' }, ver, eliminar));
   }));
 
   const hay = datos.respuestas.length > 0;
@@ -69,10 +95,10 @@ function abrirDetalle(registro) {
   $('detalle-barras').replaceChildren(...resultado.perfiles.map((p) => barraPorcentaje(p.nombre, p.porcentaje)));
   $('detalle-carreras').replaceChildren(...resultado.carreras.map((c) => crear('li', { textContent: `${c.nombre} (${c.afinidad} %)` })));
   $('detalle-respuestas').replaceChildren(...datos.preguntas.map((pregunta, i) => crear('tr', {},
-    crear('td', { textContent: pregunta.id }),
-    crear('td', { textContent: pregunta.texto }),
-    crear('td', { textContent: pregunta.perfil }),
-    crear('td', { textContent: datos.escala[registro.respuestas[i] - 1] }))));
+    celda('N.º', pregunta.id),
+    celda('Frase', pregunta.texto),
+    celda('Área', pregunta.perfil),
+    celda('Respuesta', datos.escala[registro.respuestas[i] - 1]))));
   $('detalle').showModal();
 }
 
@@ -116,16 +142,6 @@ $('salir').addEventListener('click', async () => {
 $('buscar').addEventListener('input', pintarFilas);
 $('detalle-cerrar').addEventListener('click', () => $('detalle').close());
 
-$('detalle-eliminar').addEventListener('click', async () => {
-  if (!window.confirm(`¿Eliminar la respuesta de ${seleccion.participante.nombre}? Esta acción no se puede deshacer.`)) return;
-  try {
-    await pedirJson(`/api/admin/respuestas/${seleccion.id}`, { method: 'DELETE' });
-    $('detalle').close();
-    await cargar();
-  } catch (error) {
-    $('detalle').close();
-    mostrarError($('error-panel'), error.message);
-  }
-});
+$('detalle-eliminar').addEventListener('click', (evento) => eliminarRespuesta(seleccion, evento.currentTarget));
 
 cargar();
