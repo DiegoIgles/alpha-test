@@ -38,9 +38,19 @@ Si se publica en internet, ponla detrás de HTTPS para proteger la contraseña y
 | `ADMIN_PASSWORD` | Contraseña del panel | Generada al primer inicio |
 | `DATA_DIR` | Carpeta de respuestas | `data/` |
 
+## Publicarla en Vercel
+
+No usa base de datos, pero el disco de Vercel no conserva archivos, así que las respuestas se guardan en Vercel Blob.
+
+1. En el proyecto de Vercel, entra en **Storage → Create Storage → Blob**, elige acceso **Private** y conéctalo al proyecto en todos los entornos. El acceso privado es importante: las respuestas contienen datos personales.
+2. En **Settings → Environment Variables**, agrega `ADMIN_PASSWORD` con una contraseña larga.
+3. Vuelve a desplegar (**Deployments → Redeploy**). Los cambios solo se aplican en un despliegue nuevo.
+
+En el plan Hobby, Blob incluye 2.000 operaciones avanzadas al mes: cada test enviado usa una, y cada vez que se abre el panel de administración se usa al menos otra. Si se supera algún límite, Vercel bloquea el almacén hasta que pasen 30 días. El consumo se ve en **Observability** dentro de Vercel. Conviene descargar el Excel de vez en cuando como respaldo.
+
 ## Datos
 
-Las respuestas se guardan en `data/respuestas.json`, con nombres y edades de los participantes: respalda esa carpeta y no la compartas.
+Fuera de Vercel, las respuestas se guardan en `data/respuestas.json`. Contienen nombres y edades de los participantes: respalda esos datos y no los compartas.
 
 ## Cómo se calcula el resultado
 

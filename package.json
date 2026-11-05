@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Test de orientación vocacional de ALPHA ACADEMY",
   "private": true,
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node local.js",
     "test": "node --test"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
   }
 }

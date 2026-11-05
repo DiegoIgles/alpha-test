@@ -2,21 +2,17 @@
 
 const crypto = require('node:crypto');
 const fs = require('node:fs');
-const http = require('node:http');
 const path = require('node:path');
+const { crearAlmacen, AlmacenSinConfigurar } = require('./almacen');
 const { calcularResultado } = require('./puntaje');
+const test = require('./catalogo/test.json');
+const carreras = require('./catalogo/carreras.json');
 
-const PUERTO = Number(process.env.PORT) || 3000;
-const HOST = process.env.HOST || '127.0.0.1';
 const DIR_PUBLICO = path.join(__dirname, 'public');
 const DIR_DATOS = process.env.DATA_DIR || path.join(__dirname, 'data');
-const ARCHIVO_RESPUESTAS = path.join(DIR_DATOS, 'respuestas.json');
 const ARCHIVO_CLAVE = path.join(DIR_DATOS, 'admin-password.txt');
 const DURACION_SESION_MS = 8 * 60 * 60 * 1000;
 const LIMITE_CUERPO_BYTES = 16 * 1024;
-
-const test = JSON.parse(fs.readFileSync(path.join(__dirname, 'catalogo', 'test.json'), 'utf8'));
-const carreras = JSON.parse(fs.readFileSync(path.join(__dirname, 'catalogo', 'carreras.json'), 'utf8'));
 const TOTAL_OFERTAS = carreras.reduce((total, carrera) => total + carrera.ofertas.length, 0);
 
 const TIPOS = {
@@ -27,31 +23,29 @@ const TIPOS = {
   '.ico': 'image/x-icon',
 };
 
-fs.mkdirSync(DIR_DATOS, { recursive: true });
-
-const claveAdmin = cargarClaveAdmin();
-const respuestas = cargarRespuestas();
-const sesiones = new Map();
+const almacen = crearAlmacen(DIR_DATOS);
 const intentos = new Map();
+let claveEnMemoria = null;
 
-function cargarClaveAdmin() {
+function obtenerClaveAdmin() {
   if (process.env.ADMIN_PASSWORD) return process.env.ADMIN_PASSWORD;
-  if (fs.existsSync(ARCHIVO_CLAVE)) return fs.readFileSync(ARCHIVO_CLAVE, 'utf8').trim();
-  const clave = crypto.randomBytes(9).toString('base64url');
-  fs.writeFileSync(ARCHIVO_CLAVE, clave + '\n', { mode: 0o600 });
-  console.log(`Contraseña de administrador generada: ${clave}`);
-  return clave;
+  if (process.env.VERCEL) return null;
+  if (claveEnMemoria) return claveEnMemoria;
+  if (fs.existsSync(ARCHIVO_CLAVE)) {
+    claveEnMemoria = fs.readFileSync(ARCHIVO_CLAVE, 'utf8').trim();
+  } else {
+    claveEnMemoria = crypto.randomBytes(9).toString('base64url');
+    fs.mkdirSync(DIR_DATOS, { recursive: true });
+    fs.writeFileSync(ARCHIVO_CLAVE, claveEnMemoria + '\n', { mode: 0o600 });
+    console.log(`Contraseña de administrador generada: ${claveEnMemoria}`);
+  }
+  return claveEnMemoria;
 }
 
-function cargarRespuestas() {
-  if (!fs.existsSync(ARCHIVO_RESPUESTAS)) return [];
-  return JSON.parse(fs.readFileSync(ARCHIVO_RESPUESTAS, 'utf8'));
-}
-
-function guardarRespuestas() {
-  const temporal = ARCHIVO_RESPUESTAS + '.tmp';
-  fs.writeFileSync(temporal, JSON.stringify(respuestas, null, 1));
-  fs.renameSync(temporal, ARCHIVO_RESPUESTAS);
+function ipCliente(req) {
+  // Vercel reemplaza esta cabecera, así que allí el cliente no puede falsificarla.
+  if (process.env.VERCEL) return String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  return req.socket.remoteAddress;
 }
 
 function excedeLimite(clave, maximo, ventanaMs) {
@@ -63,25 +57,27 @@ function excedeLimite(clave, maximo, ventanaMs) {
   return registro.cantidad > maximo;
 }
 
-function claveCorrecta(intento) {
-  const resumen = (texto) => crypto.createHash('sha256').update(texto).digest();
-  return crypto.timingSafeEqual(resumen(intento), resumen(claveAdmin));
+function resumen(texto) {
+  return crypto.createHash('sha256').update(texto).digest();
 }
 
-function tokenDeCookie(req) {
-  const coincidencia = /(?:^|;\s*)alpha_sesion=([^;]+)/.exec(req.headers.cookie || '');
-  return coincidencia ? coincidencia[1] : null;
+function firmar(expira, clave) {
+  return crypto.createHmac('sha256', clave).update(String(expira)).digest('hex');
+}
+
+// La sesión va firmada en la cookie porque en Vercel cada solicitud puede atenderla una instancia distinta.
+function crearTokenSesion(clave) {
+  const expira = Date.now() + DURACION_SESION_MS;
+  return `${expira}.${firmar(expira, clave)}`;
 }
 
 function esAdmin(req) {
-  const token = tokenDeCookie(req);
-  const expira = token && sesiones.get(token);
-  if (!expira) return false;
-  if (expira < Date.now()) {
-    sesiones.delete(token);
-    return false;
-  }
-  return true;
+  const clave = obtenerClaveAdmin();
+  const coincidencia = /(?:^|;\s*)alpha_sesion=(\d+)\.([0-9a-f]{64})(?:;|$)/.exec(req.headers.cookie || '');
+  if (!clave || !coincidencia) return false;
+  const [, expira, firma] = coincidencia;
+  return Number(expira) > Date.now()
+    && crypto.timingSafeEqual(Buffer.from(firma), Buffer.from(firmar(expira, clave)));
 }
 
 function cookieSesion(req, valor, maxAgeSegundos) {
@@ -163,7 +159,7 @@ function filaCsv(celdas) {
   }).join(';');
 }
 
-function generarCsv() {
+function generarCsv(respuestas) {
   const letras = Object.keys(test.perfiles);
   const encabezado = [
     'Fecha', 'Nombre', 'Edad', 'Celular', 'Colegio',
@@ -181,7 +177,7 @@ function generarCsv() {
 }
 
 async function atenderApi(req, res, ruta) {
-  const ip = req.socket.remoteAddress;
+  const ip = ipCliente(req);
 
   if (req.method === 'GET' && ruta === '/api/test') {
     return enviarJson(res, 200, {
@@ -201,22 +197,22 @@ async function atenderApi(req, res, ruta) {
       ...envio,
       resultado: calcularResultado(envio.respuestas, test, carreras),
     };
-    respuestas.push(registro);
-    guardarRespuestas();
+    await almacen.agregar(registro);
     return enviarJson(res, 201, { resultado: registro.resultado });
   }
 
   if (req.method === 'POST' && ruta === '/api/admin/login') {
     if (excedeLimite(`login:${ip}`, 10, 15 * 60 * 1000)) throw new ErrorDeCliente(429, 'Demasiados intentos. Espera 15 minutos.');
     const cuerpo = await leerJson(req);
-    if (typeof cuerpo?.clave !== 'string' || !claveCorrecta(cuerpo.clave)) throw new ErrorDeCliente(401, 'Contraseña incorrecta.');
-    const token = crypto.randomBytes(32).toString('hex');
-    sesiones.set(token, Date.now() + DURACION_SESION_MS);
-    return enviarJson(res, 200, { ok: true }, { 'Set-Cookie': cookieSesion(req, token, DURACION_SESION_MS / 1000) });
+    const clave = obtenerClaveAdmin();
+    if (!clave) throw new ErrorDeCliente(503, 'Falta configurar la contraseña de administrador (ADMIN_PASSWORD).');
+    if (typeof cuerpo?.clave !== 'string' || !crypto.timingSafeEqual(resumen(cuerpo.clave), resumen(clave))) {
+      throw new ErrorDeCliente(401, 'Contraseña incorrecta.');
+    }
+    return enviarJson(res, 200, { ok: true }, { 'Set-Cookie': cookieSesion(req, crearTokenSesion(clave), DURACION_SESION_MS / 1000) });
   }
 
   if (req.method === 'POST' && ruta === '/api/admin/logout') {
-    sesiones.delete(tokenDeCookie(req));
     return enviarJson(res, 200, { ok: true }, { 'Set-Cookie': cookieSesion(req, '', 0) });
   }
 
@@ -227,25 +223,23 @@ async function atenderApi(req, res, ruta) {
     return enviarJson(res, 200, {
       escala: test.escala,
       preguntas: test.preguntas.map(({ id, texto, dim }) => ({ id, texto, perfil: test.perfiles[dim].nombre })),
-      respuestas: [...respuestas].reverse(),
+      respuestas: [...await almacen.listar()].reverse(),
     });
   }
 
   if (req.method === 'GET' && ruta === '/api/admin/respuestas.csv') {
+    const csv = generarCsv(await almacen.listar());
     res.writeHead(200, {
       'Content-Type': 'text/csv; charset=utf-8',
       'Content-Disposition': 'attachment; filename="respuestas-alpha-academy.csv"',
       'Cache-Control': 'no-store',
     });
-    return res.end(generarCsv());
+    return res.end(csv);
   }
 
   const borrado = /^\/api\/admin\/respuestas\/([0-9a-f-]{36})$/.exec(ruta);
   if (req.method === 'DELETE' && borrado) {
-    const indice = respuestas.findIndex((r) => r.id === borrado[1]);
-    if (indice === -1) throw new ErrorDeCliente(404, 'La respuesta ya no existe.');
-    respuestas.splice(indice, 1);
-    guardarRespuestas();
+    if (!await almacen.eliminar(borrado[1])) throw new ErrorDeCliente(404, 'La respuesta ya no existe.');
     return enviarJson(res, 200, { ok: true });
   }
 
@@ -274,14 +268,17 @@ function atenderArchivo(req, res, ruta) {
   });
 }
 
-const servidor = http.createServer(async (req, res) => {
+async function manejador(req, res) {
   res.setHeader('Content-Security-Policy', "default-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'");
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'no-referrer');
 
   let ruta;
   try {
-    ruta = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const url = new URL(req.url, 'http://localhost');
+    ruta = decodeURIComponent(url.pathname);
+    // La reescritura de vercel.json puede entregar la ruta original en este parámetro.
+    if (ruta === '/api/index') ruta = `/api/${url.searchParams.get('ruta') || ''}`;
   } catch {
     res.writeHead(400);
     return res.end();
@@ -292,12 +289,13 @@ const servidor = http.createServer(async (req, res) => {
     await atenderApi(req, res, ruta);
   } catch (error) {
     if (error instanceof ErrorDeCliente) return enviarJson(res, error.estado, { error: error.message });
+    if (error instanceof AlmacenSinConfigurar) {
+      console.error(error.message);
+      return enviarJson(res, 503, { error: 'El servicio aún no está configurado para guardar respuestas.' });
+    }
     console.error(error);
     enviarJson(res, 500, { error: 'Ocurrió un error en el servidor. Intenta de nuevo.' });
   }
-});
+}
 
-servidor.listen(PUERTO, HOST, () => {
-  console.log(`ALPHA ACADEMY en http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PUERTO}`);
-  console.log(`Panel de administración: /admin (contraseña en ${process.env.ADMIN_PASSWORD ? 'ADMIN_PASSWORD' : ARCHIVO_CLAVE})`);
-});
+module.exports = { manejador, obtenerClaveAdmin, ARCHIVO_CLAVE };
