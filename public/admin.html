@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Administración | ALPHA ACADEMY</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="marca" href="/">
+      <span class="logo" data-logo>
+        <img alt="Logo de ALPHA ACADEMY" hidden>
+        <span class="logo-hueco">LOGO</span>
+      </span>
+      <span class="marca-nombre">ALPHA ACADEMY</span>
+    </a>
+    <button id="salir" class="enlace-discreto boton-texto" type="button" hidden>Cerrar sesión</button>
+  </header>
+
+  <main class="contenido">
+    <section id="vista-login" class="login" hidden>
+      <form id="form-login" class="tarjeta formulario">
+        <h1>Administración</h1>
+        <label for="clave">Contraseña</label>
+        <input id="clave" type="password" autocomplete="current-password" required>
+        <p id="error-login" class="error" role="alert" hidden></p>
+        <button class="boton" type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <section id="vista-panel" hidden>
+      <div class="panel-cabecera">
+        <h1>Respuestas del test</h1>
+        <a class="boton boton-secundario" href="/api/admin/respuestas.csv">Descargar para Excel</a>
+      </div>
+
+      <div class="estadisticas">
+        <div class="tarjeta estadistica"><span class="estadistica-etiqueta">Tests realizados</span><strong id="stat-total"></strong></div>
+        <div class="tarjeta estadistica"><span class="estadistica-etiqueta">Afinidad más frecuente</span><strong id="stat-perfil"></strong></div>
+        <div class="tarjeta estadistica"><span class="estadistica-etiqueta">Carrera más recomendada</span><strong id="stat-carrera"></strong></div>
+      </div>
+
+      <div class="tarjeta" id="bloque-distribucion">
+        <h2>Participantes por afinidad principal</h2>
+        <div id="distribucion" class="barras"></div>
+      </div>
+
+      <div class="tarjeta bloque-tabla">
+        <label for="buscar">Buscar por nombre o colegio</label>
+        <input id="buscar" type="search">
+        <div class="tabla-envoltura">
+          <table>
+            <thead>
+              <tr><th>Fecha</th><th>Nombre</th><th>Edad</th><th>Colegio</th><th>Afinidad principal</th><th>Primera carrera</th><th><span class="solo-lector">Acciones</span></th></tr>
+            </thead>
+            <tbody id="filas"></tbody>
+          </table>
+        </div>
+        <p id="sin-filas" class="vacio" hidden></p>
+      </div>
+      <p id="error-panel" class="error" role="alert" hidden></p>
+    </section>
+  </main>
+
+  <dialog id="detalle" class="detalle" aria-labelledby="detalle-nombre">
+    <div class="detalle-cabecera">
+      <h2 id="detalle-nombre"></h2>
+      <button id="detalle-cerrar" class="boton boton-secundario" type="button">Cerrar</button>
+    </div>
+    <p id="detalle-datos" class="nota"></p>
+    <h3>Afinidades</h3>
+    <div id="detalle-barras" class="barras"></div>
+    <h3>Carreras recomendadas</h3>
+    <ol id="detalle-carreras" class="detalle-carreras"></ol>
+    <h3>Respuestas</h3>
+    <div class="tabla-envoltura">
+      <table>
+        <thead><tr><th>N.º</th><th>Frase</th><th>Área</th><th>Respuesta</th></tr></thead>
+        <tbody id="detalle-respuestas"></tbody>
+      </table>
+    </div>
+    <button id="detalle-eliminar" class="boton boton-peligro" type="button">Eliminar esta respuesta</button>
+  </dialog>
+
+  <script src="/comun.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>

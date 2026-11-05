@@ -1,0 +1,14 @@
+{
+  "name": "alpha-academy-test",
+  "version": "1.0.0",
+  "description": "Test de orientación vocacional de ALPHA ACADEMY",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

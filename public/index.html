@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test vocacional | ALPHA ACADEMY</title>
+  <meta name="description" content="Descubre tus afinidades y las carreras de la UAGRM que mejor van contigo.">
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="marca" href="/">
+      <span class="logo" data-logo>
+        <img alt="Logo de ALPHA ACADEMY" hidden>
+        <span class="logo-hueco">LOGO</span>
+      </span>
+      <span class="marca-nombre">ALPHA ACADEMY</span>
+    </a>
+    <a class="enlace-discreto" href="/admin">Administración</a>
+  </header>
+
+  <main class="contenido">
+    <section id="vista-inicio" class="inicio">
+      <div class="inicio-texto">
+        <p class="antetitulo">Test vocacional</p>
+        <h1>Descubre qué carreras van contigo</h1>
+        <p class="entrada">Responde con sinceridad y conoce tus afinidades, junto con las carreras de la UAGRM que más se acercan a tu perfil.</p>
+        <ul class="datos-test">
+          <li><strong id="dato-preguntas">36</strong> preguntas</li>
+          <li><strong>5 a 7</strong> minutos</li>
+          <li><strong id="dato-carreras">58</strong> carreras de la UAGRM</li>
+        </ul>
+      </div>
+
+      <form id="formulario" class="tarjeta formulario" novalidate>
+        <h2>Tus datos</h2>
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" autocomplete="name" maxlength="100" required>
+
+        <label for="edad">Edad</label>
+        <input id="edad" name="edad" type="number" inputmode="numeric" min="10" max="99" required>
+
+        <label for="celular">Celular <span class="opcional">(opcional)</span></label>
+        <input id="celular" name="celular" type="tel" autocomplete="tel" maxlength="20">
+
+        <label for="colegio">Colegio <span class="opcional">(opcional)</span></label>
+        <input id="colegio" name="colegio" maxlength="120">
+
+        <label class="casilla">
+          <input id="consentimiento" type="checkbox" required>
+          <span>Acepto que ALPHA ACADEMY vea mis datos, respuestas y resultados.</span>
+        </label>
+
+        <p id="error-formulario" class="error" role="alert" hidden></p>
+        <button class="boton" type="submit">Comenzar el test</button>
+      </form>
+    </section>
+
+    <section id="vista-test" class="test" hidden>
+      <div class="progreso">
+        <div class="progreso-texto">
+          <span id="progreso-etiqueta"></span>
+          <span id="progreso-porcentaje"></span>
+        </div>
+        <div class="pista"><div id="progreso-barra" class="relleno"></div></div>
+      </div>
+
+      <div class="tarjeta pregunta">
+        <p class="indicacion">¿Cuánto te identificas con esta frase?</p>
+        <h2 id="pregunta-texto" tabindex="-1"></h2>
+        <div id="opciones" class="opciones" role="group" aria-labelledby="pregunta-texto"></div>
+        <p class="pista-teclado">También puedes responder con las teclas del 1 al 5.</p>
+      </div>
+
+      <p id="error-test" class="error" role="alert" hidden></p>
+      <div class="acciones">
+        <button id="anterior" class="boton boton-secundario" type="button">Anterior</button>
+        <button id="enviar" class="boton" type="button" hidden>Ver mis resultados</button>
+      </div>
+    </section>
+
+    <section id="vista-resultado" class="resultado" hidden>
+      <p class="antetitulo">Tu resultado</p>
+      <h1 id="resultado-titulo" tabindex="-1"></h1>
+      <p id="resultado-saludo" class="entrada"></p>
+      <p id="resultado-parejo" class="aviso" hidden>Tus respuestas son muy parejas entre las áreas, así que las recomendaciones son menos marcadas. Conversar con un orientador puede ayudarte a definirlas.</p>
+
+      <div class="rejilla-resultado">
+        <div class="tarjeta">
+          <h2>Tus afinidades</h2>
+          <div id="resultado-barras" class="barras"></div>
+        </div>
+        <div class="tarjeta">
+          <h2>Lo que más te define</h2>
+          <div id="resultado-perfiles" class="perfiles"></div>
+        </div>
+      </div>
+
+      <h2 class="titulo-seccion">Carreras de la UAGRM con mayor afinidad</h2>
+      <ol id="resultado-carreras" class="lista-carreras"></ol>
+
+      <p class="nota">Este resultado es una orientación según tus intereses, no un diagnóstico ni una decisión definitiva. Confirma los requisitos y la oferta vigente de cada carrera en el <a href="https://www.uagrm.edu.bo/carreras" target="_blank" rel="noopener">sitio de la UAGRM</a>.</p>
+
+      <div class="acciones no-imprimir">
+        <button id="reiniciar" class="boton boton-secundario" type="button">Hacer otro test</button>
+        <button id="imprimir" class="boton" type="button">Imprimir o guardar en PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/comun.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

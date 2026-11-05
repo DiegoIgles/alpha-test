@@ -1,0 +1,842 @@
+[
+ {
+  "nombre": "Actividad Física",
+  "codigo": "SRE",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-caf"
+   }
+  ]
+ },
+ {
+  "nombre": "Administración de Empresas",
+  "codigo": "ECS",
+  "ofertas": [
+   {
+    "sigla": "FCEE",
+    "facultad": "Facultad de Ciencias Económicas y Empresariales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcee-administracion"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-administracion-de-empresas"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-cae"
+   }
+  ]
+ },
+ {
+  "nombre": "Arquitectura",
+  "codigo": "AIR",
+  "ofertas": [
+   {
+    "sigla": "FCHDA",
+    "facultad": "Facultad de Ciencias del Hábitat, Diseño y Arte",
+    "url": "https://www.uagrm.edu.bo/carreras/fchda-carq"
+   }
+  ]
+ },
+ {
+  "nombre": "Arte",
+  "codigo": "ARS",
+  "ofertas": [
+   {
+    "sigla": "FCHDA",
+    "facultad": "Facultad de Ciencias del Hábitat, Diseño y Arte",
+    "url": "https://www.uagrm.edu.bo/carreras/fchda-cart"
+   }
+  ]
+ },
+ {
+  "nombre": "Biología",
+  "codigo": "IRA",
+  "ofertas": [
+   {
+    "sigla": "FCA",
+    "facultad": "Facultad de Ciencias Agrícolas",
+    "url": "https://www.uagrm.edu.bo/carreras/fca-biologia"
+   }
+  ]
+ },
+ {
+  "nombre": "Bioquímica",
+  "codigo": "IRC",
+  "ofertas": [
+   {
+    "sigla": "FCFB",
+    "facultad": "Facultad de Ciencias Farmacéuticas y Bioquímicas",
+    "url": "https://www.uagrm.edu.bo/carreras/fcfb-cb"
+   }
+  ]
+ },
+ {
+  "nombre": "Ciencia Política y Administración Pública",
+  "codigo": "ESI",
+  "ofertas": [
+   {
+    "sigla": "FCJPSRRII",
+    "facultad": "Facultad de Ciencias Jurídicas, Políticas, Sociales y Relaciones Internacionales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcjpsrrii-ccpap"
+   }
+  ]
+ },
+ {
+  "nombre": "Ciencias Ambientales",
+  "codigo": "IRS",
+  "ofertas": [
+   {
+    "sigla": "FCA",
+    "facultad": "Facultad de Ciencias Agrícolas",
+    "url": "https://www.uagrm.edu.bo/carreras/fca-ciencias-ambientales"
+   }
+  ]
+ },
+ {
+  "nombre": "Ciencias de la Comunicación",
+  "codigo": "AES",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-ccc"
+   }
+  ]
+ },
+ {
+  "nombre": "Ciencias de la Educación",
+  "codigo": "SAE",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-cce"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-ciencias-de-la-educacion"
+   },
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-ciencias-de-la-educacion"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-ciencias-de-la-educacion"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ciencias-de-la-educacion"
+   }
+  ]
+ },
+ {
+  "nombre": "Comercio Internacional",
+  "codigo": "ECS",
+  "ofertas": [
+   {
+    "sigla": "FCEE",
+    "facultad": "Facultad de Ciencias Económicas y Empresariales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcee-comercio-internacional"
+   }
+  ]
+ },
+ {
+  "nombre": "Construcciones Civiles",
+  "codigo": "RCE",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-ccc"
+   }
+  ]
+ },
+ {
+  "nombre": "Contaduría Pública",
+  "codigo": "CEI",
+  "ofertas": [
+   {
+    "sigla": "FAICHI",
+    "facultad": "Facultad Integral Chiquitana",
+    "url": "https://www.uagrm.edu.bo/carreras/faichi-contaduria-publica"
+   },
+   {
+    "sigla": "FCCASCGF",
+    "facultad": "Facultad de Ciencias Contables, Auditoría, Sistemas de Control de Gestión y Finanzas",
+    "url": "https://www.uagrm.edu.bo/carreras/fccascgf-cp"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-ccp"
+   },
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-contaduria"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-cc"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ccp"
+   },
+   {
+    "sigla": "FIVC",
+    "facultad": "Facultad Integral de los Valles Cruceños",
+    "url": "https://www.uagrm.edu.bo/carreras/fivc-ccp"
+   }
+  ]
+ },
+ {
+  "nombre": "Derecho",
+  "codigo": "ESI",
+  "ofertas": [
+   {
+    "sigla": "FCJPSRRII",
+    "facultad": "Facultad de Ciencias Jurídicas, Políticas, Sociales y Relaciones Internacionales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcjpsrrii-cd"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-derecho"
+   },
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-derecho"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-derecho"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-derecho"
+   }
+  ]
+ },
+ {
+  "nombre": "Diseño Integral",
+  "codigo": "AER",
+  "ofertas": [
+   {
+    "sigla": "FCHDA",
+    "facultad": "Facultad de Ciencias del Hábitat, Diseño y Arte",
+    "url": "https://www.uagrm.edu.bo/carreras/fchda-cdi"
+   }
+  ]
+ },
+ {
+  "nombre": "Economía",
+  "codigo": "IEC",
+  "ofertas": [
+   {
+    "sigla": "FCEE",
+    "facultad": "Facultad de Ciencias Económicas y Empresariales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcee-economia"
+   }
+  ]
+ },
+ {
+  "nombre": "Electricidad Industrial",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-cei"
+   }
+  ]
+ },
+ {
+  "nombre": "Electrónica",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-ce"
+   }
+  ]
+ },
+ {
+  "nombre": "Enfermería",
+  "codigo": "SIR",
+  "ofertas": [
+   {
+    "sigla": "FCSH",
+    "facultad": "Facultad de Ciencias de la Salud Humana",
+    "url": "https://www.uagrm.edu.bo/carreras/fcsh-ce"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-enfermeria"
+   },
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-enfermeria"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-enfermeria"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ce"
+   }
+  ]
+ },
+ {
+  "nombre": "Farmacia",
+  "codigo": "ICS",
+  "ofertas": [
+   {
+    "sigla": "FCFB",
+    "facultad": "Facultad de Ciencias Farmacéuticas y Bioquímicas",
+    "url": "https://www.uagrm.edu.bo/carreras/fcfb-cf"
+   }
+  ]
+ },
+ {
+  "nombre": "Gestión del Turismo",
+  "codigo": "ESA",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-cgt"
+   }
+  ]
+ },
+ {
+  "nombre": "Información y Control de Gestión",
+  "codigo": "CEI",
+  "ofertas": [
+   {
+    "sigla": "FCCASCGF",
+    "facultad": "Facultad de Ciencias Contables, Auditoría, Sistemas de Control de Gestión y Finanzas",
+    "url": "https://www.uagrm.edu.bo/carreras/fccascgf-icg"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Agroindustrial",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-ingeniera-agroindustrial"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Agronómica",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FCA",
+    "facultad": "Facultad de Ciencias Agrícolas",
+    "url": "https://www.uagrm.edu.bo/carreras/fca-ingenieria-agronomica"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Agropecuaria",
+  "codigo": "REI",
+  "ofertas": [
+   {
+    "sigla": "FAICHI",
+    "facultad": "Facultad Integral Chiquitana",
+    "url": "https://www.uagrm.edu.bo/carreras/faichi-ingenieria-agropecuaria"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-ingenieria-en-agropecuaria"
+   },
+   {
+    "sigla": "FINE",
+    "facultad": "Facultad Integral del Noreste",
+    "url": "https://www.uagrm.edu.bo/carreras/fine-ingenieria-agropecuaria"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-ingenieria-agropecuaria"
+   },
+   {
+    "sigla": "FIVC",
+    "facultad": "Facultad Integral de los Valles Cruceños",
+    "url": "https://www.uagrm.edu.bo/carreras/fivc-ingenieria-agropecuaria"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Agrícola (Montero)",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FCA",
+    "facultad": "Facultad de Ciencias Agrícolas",
+    "url": "https://www.uagrm.edu.bo/carreras/fca-ingenieria-agricola-montero"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Ambiental",
+  "codigo": "RIS",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-ciam"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Civil",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cic"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Comercial",
+  "codigo": "ESC",
+  "ofertas": [
+   {
+    "sigla": "FCEE",
+    "facultad": "Facultad de Ciencias Económicas y Empresariales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcee-comercial"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-ingenieria-comercial",
+    "nota": "Se oferta solo hasta el sexto semestre"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ingenieria-comercial"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Electromecánica",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cie"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Financiera",
+  "codigo": "ECI",
+  "ofertas": [
+   {
+    "sigla": "FCEE",
+    "facultad": "Facultad de Ciencias Económicas y Empresariales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcee-financiera"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-cif",
+    "nota": "Se oferta solo hasta el cuarto semestre"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Forestal",
+  "codigo": "RIS",
+  "ofertas": [
+   {
+    "sigla": "FCA",
+    "facultad": "Facultad de Ciencias Agrícolas",
+    "url": "https://www.uagrm.edu.bo/carreras/fca-cif"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Industrial",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cii"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-ci"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-ingenieria-industrial"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ingenieria-industrial"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Informática",
+  "codigo": "IRC",
+  "ofertas": [
+   {
+    "sigla": "FICCT",
+    "facultad": "Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones",
+    "url": "https://www.uagrm.edu.bo/carreras/ficct-cii"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-ingenieria-informatica"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Petrolera",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cip"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ingenieria-petrolera"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería Química",
+  "codigo": "IRC",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-ciq"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería de Alimentos",
+  "codigo": "IRE",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cial"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería de Control de Procesos",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FCET",
+    "facultad": "Facultad de Ciencias Exactas y Tecnología",
+    "url": "https://www.uagrm.edu.bo/carreras/fcet-cicp"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería del Petróleo y Gas Natural",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-cipgn"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Agrimensura",
+  "codigo": "RCI",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-cia"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Materiales",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-cima"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Metalurgia",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-cime"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Redes y Telecomunicaciones",
+  "codigo": "RIC",
+  "ofertas": [
+   {
+    "sigla": "FICCT",
+    "facultad": "Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones",
+    "url": "https://www.uagrm.edu.bo/carreras/ficct-cirt"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Robótica",
+  "codigo": "IRE",
+  "ofertas": [
+   {
+    "sigla": "FICCT",
+    "facultad": "Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones",
+    "url": "https://www.uagrm.edu.bo/carreras/ficct-ir"
+   }
+  ]
+ },
+ {
+  "nombre": "Ingeniería en Sistemas",
+  "codigo": "ICR",
+  "ofertas": [
+   {
+    "sigla": "FICCT",
+    "facultad": "Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones",
+    "url": "https://www.uagrm.edu.bo/carreras/ficct-cis"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-cs"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-ingenieria-en-sistemas"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-ingenieria-en-sistemas"
+   },
+   {
+    "sigla": "FIVC",
+    "facultad": "Facultad Integral de los Valles Cruceños",
+    "url": "https://www.uagrm.edu.bo/carreras/fivc-cis"
+   }
+  ]
+ },
+ {
+  "nombre": "Lenguas Modernas y Filología Hispánica",
+  "codigo": "ASI",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-clmfh"
+   }
+  ]
+ },
+ {
+  "nombre": "Licenciatura en Ofimática",
+  "codigo": "CRE",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-ofimatica"
+   }
+  ]
+ },
+ {
+  "nombre": "Mecánica General",
+  "codigo": "RCI",
+  "ofertas": [
+   {
+    "sigla": "FP",
+    "facultad": "Facultad Politécnica",
+    "url": "https://www.uagrm.edu.bo/carreras/fp-cmg"
+   }
+  ]
+ },
+ {
+  "nombre": "Medicina",
+  "codigo": "ISR",
+  "ofertas": [
+   {
+    "sigla": "FCSH",
+    "facultad": "Facultad de Ciencias de la Salud Humana",
+    "url": "https://www.uagrm.edu.bo/carreras/fcsh-cm"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-medicina"
+   }
+  ]
+ },
+ {
+  "nombre": "Medicina Veterinaria y Zootecnia",
+  "codigo": "IRS",
+  "ofertas": [
+   {
+    "sigla": "FCV",
+    "facultad": "Facultad de Ciencias Veterinarias",
+    "url": "https://www.uagrm.edu.bo/carreras/fcv-mvz"
+   },
+   {
+    "sigla": "FINI",
+    "facultad": "Facultad Integral de Ichilo",
+    "url": "https://www.uagrm.edu.bo/carreras/fini-veterinaria"
+   },
+   {
+    "sigla": "FINOR",
+    "facultad": "Facultad Integral del Norte",
+    "url": "https://www.uagrm.edu.bo/carreras/finor-medicina-veterinaria-y-zootecnia"
+   }
+  ]
+ },
+ {
+  "nombre": "Monitoreo Socioambiental",
+  "codigo": "IRS",
+  "ofertas": [
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-monitoreo-socioambiental"
+   }
+  ]
+ },
+ {
+  "nombre": "Odontología",
+  "codigo": "ISR",
+  "ofertas": [
+   {
+    "sigla": "FCSH",
+    "facultad": "Facultad de Ciencias de la Salud Humana",
+    "url": "https://www.uagrm.edu.bo/carreras/fcsh-co"
+   },
+   {
+    "sigla": "FICH",
+    "facultad": "Facultad Integral del Chaco",
+    "url": "https://www.uagrm.edu.bo/carreras/fich-co"
+   }
+  ]
+ },
+ {
+  "nombre": "Planificación Territorial",
+  "codigo": "EIA",
+  "ofertas": [
+   {
+    "sigla": "FCHDA",
+    "facultad": "Facultad de Ciencias del Hábitat, Diseño y Arte",
+    "url": "https://www.uagrm.edu.bo/carreras/fchda-cpt"
+   }
+  ]
+ },
+ {
+  "nombre": "Psicología",
+  "codigo": "SIA",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-cps"
+   }
+  ]
+ },
+ {
+  "nombre": "Relaciones Internacionales",
+  "codigo": "ESA",
+  "ofertas": [
+   {
+    "sigla": "FCJPSRRII",
+    "facultad": "Facultad de Ciencias Jurídicas, Políticas, Sociales y Relaciones Internacionales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcjpsrrii-cri"
+   }
+  ]
+ },
+ {
+  "nombre": "Sociología",
+  "codigo": "ISA",
+  "ofertas": [
+   {
+    "sigla": "FH",
+    "facultad": "Facultad de Humanidades",
+    "url": "https://www.uagrm.edu.bo/carreras/fh-cs"
+   }
+  ]
+ },
+ {
+  "nombre": "Trabajo Social",
+  "codigo": "SEA",
+  "ofertas": [
+   {
+    "sigla": "FCJPSRRII",
+    "facultad": "Facultad de Ciencias Jurídicas, Políticas, Sociales y Relaciones Internacionales",
+    "url": "https://www.uagrm.edu.bo/carreras/fcjpsrrii-cts"
+   }
+  ]
+ },
+ {
+  "nombre": "Zootecnia",
+  "codigo": "RIE",
+  "ofertas": [
+   {
+    "sigla": "FAICHI",
+    "facultad": "Facultad Integral Chiquitana",
+    "url": "https://www.uagrm.edu.bo/carreras/faichi-zootecnia"
+   }
+  ]
+ }
+]
